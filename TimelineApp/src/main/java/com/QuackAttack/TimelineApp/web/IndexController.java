@@ -1,6 +1,7 @@
 package com.QuackAttack.TimelineApp.web;
 
 import com.QuackAttack.TimelineApp.serviceTimeLine.Quack;
+import com.QuackAttack.TimelineApp.serviceTimeLine.UserData;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +16,9 @@ public class IndexController {
     private static final String GET_FOLLOWING = "https://dummy.url/getfollowing";
 
     @GetMapping("/timeline")
-    public List<Quack> timeline(int user_id) {
+    public List<Quack> timeline(UserData userData) {
 
-        // request to follow, get following for user_id
+        // request to follow service, get following for user_id
         // return list of followings
 
 

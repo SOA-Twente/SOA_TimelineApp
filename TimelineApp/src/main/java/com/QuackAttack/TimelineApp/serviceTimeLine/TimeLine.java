@@ -1,6 +1,7 @@
 package com.QuackAttack.TimelineApp.serviceTimeLine;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import javax.net.ssl.HttpsURLConnection;
@@ -8,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class TimeLine {
 
@@ -24,23 +27,24 @@ public class TimeLine {
         con.setRequestMethod("GET");
 
         // do construct request to follow with user id
-        List<UserData> users = null;
+        List<UserData> followingList = null;
 
-        return users;
+        return followingList;
     }
 
     // retrieve tweets from profile service
-    public List<Quack> timeline(List<UserData> following) {
+    public List<Quack> timeline(List<UserData> followingList) {
 
+        // list to return at the end
         List<Quack> quackList = new ArrayList<>();
 
         StringBuilder userIDList = new StringBuilder();
 
-        for (int i = 0; i < following.size(); i++) {
+        for (int i = 0; i < followingList.size(); i++) {
             if (i == 0) {
-                userIDList.append(following.get(0).getId());
+                userIDList.append(followingList.get(0).getId());
             } else {
-                userIDList.append(", " + following.get(i).getId());
+                userIDList.append(", " + followingList.get(i).getId());
             }
         }
 
